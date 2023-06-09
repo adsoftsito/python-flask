@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-consumer
+  name: python-flask
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kafka-consumer
+      app: python-flask
   template:
     metadata:
       labels:
-        app: kafka-consumer
+        app: python-flask
     spec:
       containers:
-      - image: docker.io/adsoft/kafka-consumer:{github.sha}
+      - image: docker.io/adsoft/python-flask:{github.sha}
         name: kafka-consumer
 #        envFrom:
 #        - configMapRef:
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kafka-consumer
+  name: python-flask
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "kafka-consumer"
+  - name: "python-flask"
     port: 8081
   selector:
-    app: kafka-consumer
+    app: python-flask
