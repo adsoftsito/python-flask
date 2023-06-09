@@ -5,4 +5,4 @@ ENV FLASK_APP run.py
 COPY requirements.txt /
 RUN pip install -r requirements.txt
 COPY . /
-CMD flask run -h 0.0.0.0 -p 8080
+CMD flask run -h 0.0.0.0 -p 5000
